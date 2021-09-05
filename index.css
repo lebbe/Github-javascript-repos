@@ -39,6 +39,7 @@ thead {
     position: sticky;
     top: 0;
     background-color: #fff;
+    background-clip: text; /* Background color on thead is drawn above border unless we also have this. */
 }
 
 footer {
@@ -47,7 +48,6 @@ footer {
     background-color: #fff;
     padding: 4px 0;
     border: 1px solid #000;
-    width: 100%;
-    box-sizing: border-box;
+    display: inline-block;
     left: 0;
 }
