@@ -23,10 +23,10 @@
     function makeCell(text, link) {
         const element = document.createElement('td')
         if (link) {
-            const link = document.createElement('a')
-            link.href = link
-            link.innerText = text
-            element.appendChild(link)
+            const linkNode = document.createElement('a')
+            linkNode.href = link
+            linkNode.innerText = text
+            element.appendChild(linkNode)
         } else {
             element.innerText = text // Avoid all sorts of XSS
             element.className = 'number'
