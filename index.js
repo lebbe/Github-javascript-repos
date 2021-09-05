@@ -3,14 +3,18 @@
      * STATE STUFF
      */
     let items = []
-    let from = 0
+    let page = 0
 
     /**
-     * REF STUFF
+     * REF/CONST STUFF
      */
+    const pagesize = 20
     const tbody = document.getElementById('rows')
     const previous = document.getElementById('last')
     const next = document.getElementById('next')
+    const fromText = document.getElementById('from')
+    const toText = document.getElementById('to')
+    const totalText = document.getElementById('total')
 
     /****************\
      * RENDER STUFF *|
@@ -43,12 +47,18 @@
     }
 
     function render() {
-        previous.disabled = from === 0
-        next.disabled = from === 80
+        const pages = items.length / pagesize
+        const from = page * pagesize
+        previous.disabled = page === 0
+        next.disabled = page + 1 === pages
+
+        fromText.innerText = from
+        toText.innerText = from + pagesize
+        totalText.innerText = items.length
 
         tbody.innerHTML = ''
 
-        for (var i = from; i < from + 20 && i < items.length; i++) {
+        for (var i = from; i < from + pagesize; i++) {
             const {
                 name,
                 clone_url,
@@ -76,18 +86,18 @@
 	\*********************/
 
     previous.addEventListener('click', function () {
-        from = from - 20
-        if (from < 0) {
-            from = 0
+        page--
+        if (page < 0) {
+            page = 0
         }
 
         render()
     })
 
     next.addEventListener('click', function () {
-        from = from + 20
-        if (from > 80) {
-            from = 80
+        page++
+        if (page > 80) {
+            page = 80
         }
 
         render()
@@ -99,6 +109,6 @@
         .then((response) => response.json())
         .then((data) => {
             items = data.items
-            render(from)
+            render()
         })
 })()
