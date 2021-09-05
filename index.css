@@ -38,8 +38,12 @@ a {
 thead {
     position: sticky;
     top: 0;
+}
+
+thead th {
     background-color: #fff;
-    background-clip: text; /* Background color on thead is drawn above border unless we also have this. */
+    /* Background color on thead is drawn above border unless we also have this. */
+    background-clip: padding-box;
 }
 
 footer {
