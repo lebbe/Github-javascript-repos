@@ -96,8 +96,8 @@
 
     next.addEventListener('click', function () {
         page++
-        if (page > 80) {
-            page = 80
+        if (page - 1 > items.length / pagesize) {
+            page = items.length / pagesize - 1
         }
 
         render()
