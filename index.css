@@ -1,0 +1,32 @@
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fbe;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 4px 8px;
+    min-width: 80px;
+}
+
+td:first-child {
+    min-width: 210px;
+}
+
+td:nth-child(2) {
+    min-width: 300px;
+}
+
+td.number {
+    text-align: right;
+}
+
+a {
+    color: black;
+}
